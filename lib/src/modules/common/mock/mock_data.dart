@@ -1,4 +1,4 @@
-import 'package:whatsapp_clone/modules/common/models/chat_item.dart';
+import 'package:whatsapp_clone/src/modules/common/models/chat_item.dart';
 
 class MockData {
   static List<ChatItem> chats = [
@@ -8,6 +8,7 @@ class MockData {
     ChatItem(title: "Fa Koffman", subtitle: "Wake me up inside"),
     ChatItem(title: "Isyurf ridge", subtitle: "Save meeeee"),
     ChatItem(
-        title: "Runni nggogetit", subtitle: "Call my name and save me from the dark"),
+        title: "Runni nggogetit",
+        subtitle: "Call my name and save me from the dark"),
   ];
 }
