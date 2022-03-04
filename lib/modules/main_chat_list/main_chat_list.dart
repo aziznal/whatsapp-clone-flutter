@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MainChatListPage extends StatefulWidget {
-  const MainChatListPage({Key? key, required this.title}) : super(key: key);
+  final String _title = "WhatsappClone";
 
-  final String title;
+  const MainChatListPage({Key? key}) : super(key: key);
 
   @override
   State<MainChatListPage> createState() => _MainChatListPageState();
@@ -23,7 +22,7 @@ class _MainChatListPageState extends State<MainChatListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget._title),
       ),
       body: Center(
         child: Column(

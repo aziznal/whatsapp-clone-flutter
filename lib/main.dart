@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/modules/main_chat_list/main_chat_list.dart';
-import './theme/primary_color_swatch.dart';
+
+import 'theme/custom_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: CustomPrimaryColor.whatsappTeal,
       ),
-      home: const MainChatListPage(title: 'WhatsappClone'),
+      home: const MainChatListPage(),
     );
   }
 }
