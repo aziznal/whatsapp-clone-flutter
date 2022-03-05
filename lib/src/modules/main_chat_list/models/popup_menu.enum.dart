@@ -1,0 +1,1 @@
+enum MainChatListMenuItem { settings, about }
