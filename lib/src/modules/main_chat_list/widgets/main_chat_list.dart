@@ -22,7 +22,7 @@ class _MainChatListPageState extends State<MainChatListPage> {
         text: "WhatsappClone",
         actions: [
           getSearchAction(context),
-          ...getPopupMenuActions(),
+          getPopupMenuActions(),
         ],
       ),
       body: ChatList(),
@@ -40,21 +40,19 @@ Widget getSearchAction(context) {
   );
 }
 
-List<Widget> getPopupMenuActions() {
-  return [
-    PopupMenuButton<MainChatListMenuItem>(
-      itemBuilder: (BuildContext context) {
-        return const [
-          PopupMenuItem<MainChatListMenuItem>(
-            child: Text('Settings'),
-            value: MainChatListMenuItem.settings,
-          ),
-          PopupMenuItem<MainChatListMenuItem>(
-            child: Text('About'),
-            value: MainChatListMenuItem.about,
-          ),
-        ];
-      },
-    )
-  ];
+Widget getPopupMenuActions() {
+  return PopupMenuButton<MainChatListMenuItem>(
+    itemBuilder: (BuildContext context) {
+      return const [
+        PopupMenuItem<MainChatListMenuItem>(
+          child: Text('Settings'),
+          value: MainChatListMenuItem.settings,
+        ),
+        PopupMenuItem<MainChatListMenuItem>(
+          child: Text('About'),
+          value: MainChatListMenuItem.about,
+        ),
+      ];
+    },
+  );
 }
