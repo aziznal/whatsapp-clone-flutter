@@ -44,11 +44,15 @@ List<Widget> getPopupMenuActions() {
   return [
     PopupMenuButton<MainChatListMenuItem>(
       itemBuilder: (BuildContext context) {
-        return [
-          const PopupMenuItem<MainChatListMenuItem>(
-            child: Text('test'),
+        return const [
+          PopupMenuItem<MainChatListMenuItem>(
+            child: Text('Settings'),
             value: MainChatListMenuItem.settings,
-          )
+          ),
+          PopupMenuItem<MainChatListMenuItem>(
+            child: Text('About'),
+            value: MainChatListMenuItem.about,
+          ),
         ];
       },
     )
