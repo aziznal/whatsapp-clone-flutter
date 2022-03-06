@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list.dart';
+
+import 'package:get/get.dart';
+
 import 'package:com.aziznal.whatsapp_clone/src/theme/custom_theme.dart';
 
+import 'package:com.aziznal.whatsapp_clone/src/modules/about/widgets/about_screen.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,12 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'WhatsappClone',
       theme: ThemeData(
         primarySwatch: CustomPrimaryColor.whatsappTeal,
       ),
-      home: const MainChatListPage(),
+      home: Builder(builder: (context) => MainChatListPage()),
+      getPages: [
+        GetPage(name: '/about', page: () => (AboutScreen()))
+      ],
     );
   }
 }
