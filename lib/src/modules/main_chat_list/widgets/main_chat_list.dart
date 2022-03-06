@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/popup_menu.enum.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/main_chat_list_menu_item.enum.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.dart';
 
