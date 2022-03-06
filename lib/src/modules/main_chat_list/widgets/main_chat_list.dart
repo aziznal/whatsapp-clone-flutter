@@ -1,6 +1,5 @@
-import 'dart:async';
+import 'package:get/get.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/about/widgets/about_screen.dart';
 import 'package:com.aziznal.whatsapp_clone/src/utils/helpers.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +7,9 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soo
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/main_chat_list_menu_item.enum.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_list.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.dart';
-import 'package:get/get.dart';
 
 class MainChatListPage extends StatelessWidget {
   MainChatListPage({Key? key}) : super(key: key);
