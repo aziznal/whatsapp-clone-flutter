@@ -11,9 +11,7 @@ extension AddPaddingBetweenListItems on List<Widget> {
       },
     ).toList();
   }
-}
 
-extension AddVerticalPaddingBetweenListItems on List<Widget> {
   List<Widget> addVerticalSpacing(double paddingAmount) {
     return map(
       (widget) {
@@ -24,9 +22,7 @@ extension AddVerticalPaddingBetweenListItems on List<Widget> {
       },
     ).toList();
   }
-}
 
-extension AddHorizontalPaddingBetweenListItems on List<Widget> {
   List<Widget> addHorizontalSpacing(double paddingAmount) {
     return map(
       (widget) {
