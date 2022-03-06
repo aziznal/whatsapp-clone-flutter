@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:whatsapp_clone/src/modules/common/models/chat_item.dart';
-import 'package:whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat_item.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
 
 class ChatItemWidget extends StatelessWidget {
   const ChatItemWidget({

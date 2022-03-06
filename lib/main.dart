@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list.dart';
-import 'package:whatsapp_clone/src/theme/custom_theme.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list.dart';
+import 'package:com.aziznal.whatsapp_clone/src/theme/custom_theme.dart';
 
 void main() {
   runApp(const MyApp());

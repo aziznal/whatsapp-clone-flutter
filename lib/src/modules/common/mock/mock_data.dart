@@ -1,4 +1,4 @@
-import 'package:whatsapp_clone/src/modules/common/models/chat_item.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat_item.dart';
 
 class MockData {
   static List<ChatItem> chats = [

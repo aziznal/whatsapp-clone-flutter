@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:whatsapp_clone/src/modules/common/mock/mock_data.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
 
-import 'package:whatsapp_clone/src/modules/main_chat_list/widgets/chat_item.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_item.dart';
 
 class ChatList extends StatelessWidget {
   const ChatList({

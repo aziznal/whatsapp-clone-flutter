@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
 
 class NewChatFAB extends StatelessWidget {
   const NewChatFAB({
