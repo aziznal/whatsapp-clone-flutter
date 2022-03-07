@@ -1,3 +1,4 @@
+import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/add_new_chat_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -21,8 +22,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: CustomPrimaryColor.whatsappTeal,
       ),
+      // home: Builder(builder: (context) => MainChatListScreen()),
       home: Builder(builder: (context) => MainChatListScreen()),
       getPages: [
+        GetPage(name: '/add-new-chat', page: () => (AddNewChatScreen())),
         GetPage(name: '/about', page: () => (AboutScreen()))
       ],
     );
