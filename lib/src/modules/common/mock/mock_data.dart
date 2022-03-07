@@ -1,29 +1,39 @@
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat_item.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.model.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/message.model.dart';
 
 class MockData {
-  static List<ChatItem> chats = [
-    ChatItem(
-      title: 'John Doe',
-      subtitle: 'Wake me up',
+  static List<Contact> contacts = [
+    Contact(
+      name: 'John Doe',
+      number: '+00 555 55 555',
+      status: 'Yo! I do be utilizing this app tho',
+      imageAssetPath: 'assets/images/app-icon.png',
     ),
-    ChatItem(
-      title: 'Eva',
-      subtitle: 'Wake me up inside',
+    Contact(
+      name: 'Jane Doe',
+      number: '+00 444 44 444',
+      status:
+          "I have an unnecessarily long status to show people how sophisticated I am, but really I'm quite sad.",
+      imageAssetPath: 'assets/images/app-icon.png',
     ),
-    ChatItem(
-      title: 'Sam Spa',
-      subtitle: "Can't wake up",
+  ];
+
+  static List<Chat> chats = [
+    Chat(
+      contact: contacts[0],
+      messages: [
+        Message(
+          body: 'Hey',
+          dateSent: DateTime.now(),
+          sender: MessageSender.self,
+        ),
+        Message(
+          body: 'Hiya',
+          dateSent: DateTime.now().add(Duration(minutes: 2)),
+          sender: MessageSender.other,
+        ),
+      ],
     ),
-    ChatItem(
-      title: 'Fa Koffman',
-      subtitle: 'Wake me up inside',
-    ),
-    ChatItem(
-      title: 'Isyurf ridge',
-      subtitle: 'Save meeeee',
-    ),
-    ChatItem(
-        title: 'Runni nggogetit',
-        subtitle: 'Call my name and save me from the dark'),
   ];
 }

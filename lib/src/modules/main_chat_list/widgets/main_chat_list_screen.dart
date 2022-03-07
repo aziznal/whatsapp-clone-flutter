@@ -11,8 +11,8 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/mai
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_list.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.dart';
 
-class MainChatListPage extends StatelessWidget {
-  MainChatListPage({Key? key}) : super(key: key);
+class MainChatListScreen extends StatelessWidget {
+  MainChatListScreen({Key? key}) : super(key: key);
 
   final MainChatListController controller = Get.put(MainChatListController());
 

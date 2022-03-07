@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat_item.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
 class ChatItemWidget extends StatelessWidget {
   const ChatItemWidget({
@@ -9,7 +12,7 @@ class ChatItemWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final ChatItem chatItemData;
+  final Chat chatItemData;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +35,19 @@ class ChatItemWidget extends StatelessWidget {
 
   Column getTitleAndSubtitle() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(chatItemData.title, textAlign: TextAlign.start),
-        Text(chatItemData.subtitle),
-      ],
+        Text(
+          chatItemData.contact.name,
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(chatItemData.messages.last.body),
+      ].addVerticalSpacing(2),
     );
   }
 
@@ -49,7 +59,7 @@ class ChatItemWidget extends StatelessWidget {
         margin: const EdgeInsets.only(right: 10.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(300.0),
-          child: Image.asset('assets/images/app-icon.png'),
+          child: Image.asset(chatItemData.contact.imageAssetPath),
         ),
       ),
       onTap: () => showComingSoonSnackBar(context),

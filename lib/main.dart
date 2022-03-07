@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:com.aziznal.whatsapp_clone/src/theme/custom_theme.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/about/widgets/about_screen.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: CustomPrimaryColor.whatsappTeal,
       ),
-      home: Builder(builder: (context) => MainChatListPage()),
+      home: Builder(builder: (context) => MainChatListScreen()),
       getPages: [
         GetPage(name: '/about', page: () => (AboutScreen()))
       ],
