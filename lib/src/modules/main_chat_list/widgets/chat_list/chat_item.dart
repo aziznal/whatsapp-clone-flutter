@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:get/get.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart'
+    as route;
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
+
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
-
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
 class ChatItemWidget extends StatelessWidget {
   const ChatItemWidget({
@@ -28,12 +32,14 @@ class ChatItemWidget extends StatelessWidget {
           ],
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        gotoChatScreen();
+      },
       splashColor: const Color.fromARGB(255, 136, 136, 136),
     );
   }
 
-  Column getTitleAndSubtitle() {
+  Widget getTitleAndSubtitle() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +61,7 @@ class ChatItemWidget extends StatelessWidget {
     );
   }
 
-  GestureDetector getImageWidget(BuildContext context) {
+  Widget getImageWidget(BuildContext context) {
     return GestureDetector(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.20,
@@ -68,5 +74,9 @@ class ChatItemWidget extends StatelessWidget {
       ),
       onTap: () => showComingSoonSnackBar(context),
     );
+  }
+
+  void gotoChatScreen() {
+    Get.toNamed(route.ScreenRoutes.chat.withChatId(chatItemData.id));
   }
 }
