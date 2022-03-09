@@ -7,7 +7,7 @@ import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/utils/helpers.dart';
+import 'package:com.aziznal.whatsapp_clone/src/utils/utils.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/main_chat_list_menu_item.enum.dart';
 
@@ -55,7 +55,7 @@ class MainChatListScreen extends StatelessWidget {
             child: Text('About'),
             value: MainChatListMenuItem.about,
             onTap: () {
-              Helpers.executeAfterTimerHack(
+              Utils.executeAfterTimerHack(
                 () => Get.toNamed(ScreenRoutes.about),
               );
             },
