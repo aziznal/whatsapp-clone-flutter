@@ -1,6 +1,7 @@
+import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
 import 'package:flutter/material.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
+import 'package:get/get.dart';
 
 class NewChatFAB extends StatelessWidget {
   const NewChatFAB({
@@ -10,7 +11,9 @@ class NewChatFAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => showComingSoonSnackBar(context),
+      onPressed: () {
+        Get.toNamed(ScreenRoutes.addNewChat);
+      },
       child: const Icon(Icons.message),
     );
   }
