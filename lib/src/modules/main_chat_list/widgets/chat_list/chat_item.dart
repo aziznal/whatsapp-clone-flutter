@@ -46,7 +46,11 @@ class ChatItemWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Text(chatItemData.messages.last.body),
+        Text(
+          chatItemData.messages.isNotEmpty
+              ? chatItemData.messages.last.body
+              : '',
+        ),
       ].addVerticalSpacing(2),
     );
   }

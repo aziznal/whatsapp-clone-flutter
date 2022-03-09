@@ -1,10 +1,9 @@
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.model.dart';
 import 'package:flutter/material.dart';
 
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/contact_list/contact_list.dart';
 
 class AddNewChatScreen extends StatelessWidget {
   const AddNewChatScreen({Key? key}) : super(key: key);
@@ -14,18 +13,20 @@ class AddNewChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         text: 'Add New Chat',
+        actions: [
+          getAppBarSearchAction(context),
+        ],
       ),
-      body: getContactList(),
+      body: ContactList(),
     );
   }
 
-  Widget getContactList() {
-    return ListView(
-      children: MockData.contacts.map((contact) => getContactWidget(contact)).toList().addVerticalSpacing(4),
+  Widget getAppBarSearchAction(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        showComingSoonSnackBar(context);
+      },
+      icon: const Icon(Icons.search),
     );
-  }
-
-  Widget getContactWidget(Contact contactData) {
-    return Text(contactData.name);
   }
 }

@@ -20,8 +20,9 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: CustomPrimaryColor.whatsappTeal,
       ),
-      // home: Builder(builder: (context) => MainChatListScreen()),
-      home: Builder(builder: (context) => MainChatListScreen()),
+      home: Builder(
+        builder: (context) => MainChatListScreen(),
+      ),
       getPages: [
         GetPage(
           name: ScreenRoutes.addNewChat,
