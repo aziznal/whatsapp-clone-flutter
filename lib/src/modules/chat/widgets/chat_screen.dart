@@ -43,6 +43,7 @@ class ChatScreen extends StatelessWidget {
   }
 
   Chat getChatById() {
+    // TODO: change to use service
     return MockData.chats.firstWhere((chat) => chat.id == chatId);
   }
 

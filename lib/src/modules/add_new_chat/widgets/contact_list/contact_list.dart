@@ -1,26 +1,45 @@
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
 import 'package:flutter/material.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
+import 'package:get/get.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.model.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/contact_list/contact_item.dart';
 
-class ContactList extends StatelessWidget {
+class ContactList extends StatefulWidget {
   const ContactList({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<ContactList> createState() => _ContactListState();
+}
+
+class _ContactListState extends State<ContactList> {
+  var controller = Get.find<ItemListController<Contact>>();
+
+  @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.vertical,
-      padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 56.0),
-      children: getContactItemWidgets(),
-    );
+    return getLoadedContacts();
   }
 
-  List<ContactItemWidget> getContactItemWidgets() {
-    return MockData.contacts
-        .map((contact) => ContactItemWidget(contactData: contact))
-        .toList();
+  Widget getLoadedContacts() {
+    return Obx(
+      () {
+        if (controller.isLoading.isTrue) {
+          return CustomLoadingSpinner();
+        }
+
+        return ListView.builder(
+          itemCount: controller.items.length,
+          itemBuilder: (context, index) {
+            return ContactItemWidget(contactData: controller.items[index]);
+          },
+        );
+      },
+    );
   }
 }
