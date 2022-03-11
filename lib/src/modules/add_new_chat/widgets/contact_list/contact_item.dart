@@ -43,12 +43,10 @@ class ContactItemWidget extends StatelessWidget {
       onTap: () {
         Utils.executeAfterTimerHack(() async {
           if (await chatIsNotAlreadyCreated()) {
-            Chat newChat = await createNewChat();
-            gotoChatScreen(newChat);
-          } else {
-            Chat chat = await ChatService.getChatByContact(contactData.id);
-            gotoChatScreen(chat);
+            await createNewChat();
           }
+          Chat chat = await ChatService.getChatByContact(contactData.id);
+          gotoChatScreen(chat);
         });
       },
       splashColor: const Color.fromARGB(255, 136, 136, 136),
@@ -98,7 +96,7 @@ class ContactItemWidget extends StatelessWidget {
     return !(await ChatService.checkContactHasChat(contactData.id));
   }
 
-  Future<Chat> createNewChat() async {
+  Future createNewChat() async {
     Chat newChat = Chat(
       contact: contactData,
       messages: [],
@@ -107,8 +105,6 @@ class ContactItemWidget extends StatelessWidget {
     await ChatService.addNewChat(newChat).then((_) {
       Get.find<ItemListController<Chat>>().addNewObject(newChat);
     });
-
-    return newChat;
   }
 
   void gotoChatScreen(Chat newChat) {
