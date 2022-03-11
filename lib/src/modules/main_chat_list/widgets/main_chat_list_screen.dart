@@ -1,7 +1,11 @@
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
 
@@ -11,20 +15,17 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app
 import 'package:com.aziznal.whatsapp_clone/src/utils/utils.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/main_chat_list_menu_item.enum.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_list.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
-
-class MainChatListScreen extends GetView<MainChatListController> {
+class MainChatListScreen extends GetView<ItemListController> {
   MainChatListScreen({Key? key}) : super(key: key);
 
-  // TODO: move logic into Controller
-
   @override
-  MainChatListController controller = Get.put(MainChatListController());
+  ItemListController<Chat> controller = Get.put(ItemListController<Chat>(
+    itemLoaderMethod: () => ChatService.getAllChats(),
+  ));
 
   @override
   Widget build(BuildContext context) {
@@ -75,41 +76,5 @@ class MainChatListScreen extends GetView<MainChatListController> {
         ];
       },
     );
-  }
-}
-
-class MainChatListController extends GetxController
-    with StateMixin<List<Chat>> {
-  RxList<Chat> chats = RxList<Chat>();
-
-  @override
-  onInit() {
-    super.onInit();
-    loadChats();
-
-    listenToListUpdate();
-  }
-
-  void listenToListUpdate() {
-    chats.listen((p0) {
-      update();
-    });
-  }
-
-  loadChats() {
-    return ChatService.getAllChats().then(
-      (loadedChats) {
-        chats.addAll(loadedChats);
-        change(chats, status: RxStatus.success());
-      },
-    ).onError(
-      (error, stackTrace) {
-        change(chats, status: RxStatus.error());
-      },
-    );
-  }
-
-  addNewChat(Chat newChat) {
-    chats.add(newChat);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,8 +11,6 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.mod
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
-
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list_screen.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
 
@@ -100,7 +99,7 @@ class ContactItemWidget extends StatelessWidget {
     );
 
     ChatService.addNewChat(newChat).then((_) {
-      Get.find<MainChatListController>().addNewChat(newChat);
+      Get.find<ItemListController<Chat>>().addNewObject(newChat);
       gotoChatScreen();
     });
   }
