@@ -37,12 +37,7 @@ class MainChatListScreen extends GetView<ItemListController> {
           _getPopupMenuActions(),
         ],
       ),
-      body: controller.obx(
-        (state) {
-          return ChatList(chats: state);
-        },
-        onLoading: CustomLoadingSpinner(),
-      ),
+      body: ChatList(),
       floatingActionButton: NewChatFAB(),
     );
   }

@@ -1,28 +1,42 @@
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
 import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_item.dart';
+import 'package:get/get.dart';
 
 class ChatList extends StatelessWidget {
-  const ChatList({Key? key, required this.chats}) : super(key: key);
+  ChatList({Key? key}) : super(key: key);
 
-  final List<Chat>? chats;
+  var controller = Get.find<ItemListController<Chat>>();
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.vertical,
-      padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 56.0),
-      children: getChatItemWidgets(),
-    );
+    return getLoadedChatList();
   }
 
-  List<ChatItemWidget> getChatItemWidgets() {
-    if (chats == null) {
-      return [];
-    } else {
-      return chats!.map((chat) => ChatItemWidget(chatItemData: chat)).toList();
-    }
+  Widget getLoadedChatList() {
+    return Obx(() {
+      if (controller.isLoading.isTrue) {
+        return CustomLoadingSpinner();
+      }
+
+      return ListView.builder(
+        itemCount: controller.items.length,
+        itemBuilder: (context, index) {
+          return ChatItemWidget(chatItemData: controller.items[index]);
+        },
+      );
+    });
   }
+
+  // List<ChatItemWidget> getChatItemWidgets() {
+  //   if (chats == null) {
+  //     return [];
+  //   } else {
+  //     return chats!.map((chat) => ChatItemWidget(chatItemData: chat)).toList();
+  //   }
+  // }
 }

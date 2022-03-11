@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,32 +12,51 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soo
 
 import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
 
-class ChatItemWidget extends StatelessWidget {
+class ChatItemWidget extends StatefulWidget {
+  final Chat chatItemData;
+
   const ChatItemWidget({
     required this.chatItemData,
     Key? key,
   }) : super(key: key);
 
-  final Chat chatItemData;
+  @override
+  State<ChatItemWidget> createState() => _ChatItemWidgetState();
+}
+
+class _ChatItemWidgetState extends State<ChatItemWidget> {
+  late double opacity = 0.0;
+
+  _ChatItemWidgetState() {
+    Timer(Duration(milliseconds: 1000), () {
+      setState(() {
+        opacity = 1.0;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            getImageWidget(context),
-            getTitleAndSubtitle(),
-          ],
+    return AnimatedOpacity(
+      duration: Duration(milliseconds: 200),
+      opacity: opacity,
+      child: InkWell(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              getImageWidget(context),
+              getTitleAndSubtitle(),
+            ],
+          ),
         ),
+        onTap: () {
+          gotoChatScreen();
+        },
+        splashColor: const Color.fromARGB(255, 136, 136, 136),
       ),
-      onTap: () {
-        gotoChatScreen();
-      },
-      splashColor: const Color.fromARGB(255, 136, 136, 136),
     );
   }
 
@@ -45,7 +66,7 @@ class ChatItemWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          chatItemData.contact.name,
+          widget.chatItemData.contact.name,
           textAlign: TextAlign.start,
           style: TextStyle(
             fontSize: 17,
@@ -53,8 +74,8 @@ class ChatItemWidget extends StatelessWidget {
           ),
         ),
         Text(
-          chatItemData.messages.isNotEmpty
-              ? chatItemData.messages.last.body
+          widget.chatItemData.messages.isNotEmpty
+              ? widget.chatItemData.messages.last.body
               : '',
         ),
       ].addVerticalSpacing(2),
@@ -69,7 +90,7 @@ class ChatItemWidget extends StatelessWidget {
         margin: const EdgeInsets.only(right: 10.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(300.0),
-          child: Image.asset(chatItemData.contact.imageAssetPath),
+          child: Image.asset(widget.chatItemData.contact.imageAssetPath),
         ),
       ),
       onTap: () => showComingSoonSnackBar(context),
@@ -77,6 +98,6 @@ class ChatItemWidget extends StatelessWidget {
   }
 
   void gotoChatScreen() {
-    Get.toNamed(route.ScreenRoutes.chat.withChatId(chatItemData.id));
+    Get.toNamed(route.ScreenRoutes.chat.withChatId(widget.chatItemData.id));
   }
 }

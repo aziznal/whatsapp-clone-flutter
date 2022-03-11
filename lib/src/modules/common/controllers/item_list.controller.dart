@@ -1,41 +1,36 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 
-class ItemListController<ItemType> extends GetxController
-    with StateMixin<List<ItemType>> {
+class ItemListController<ItemType> extends GetxController {
   ItemListController({required this.itemLoaderMethod});
 
   final Future<List<ItemType>> Function() itemLoaderMethod;
 
   RxList<ItemType> items = RxList<ItemType>();
+  RxBool isLoading = true.obs;
 
   @override
   onInit() {
     super.onInit();
     _loadItems();
-    _listenToListUpdate();
   }
 
   addNewObject(ItemType newObject) {
     items.add(newObject);
   }
 
-  /// Makes controller update on any change to the object list
-  void _listenToListUpdate() {
-    items.listen((p0) {
-      update();
-    });
-  }
-
   void _loadItems() {
+    isLoading(true);
+
     itemLoaderMethod().then(
       (loadedObjects) {
         items.addAll(loadedObjects);
-
-        change(items, status: RxStatus.success());
+        isLoading(false);
       },
     ).onError(
       (error, stackTrace) {
-        change(items, status: RxStatus.error());
+        isLoading(false);
       },
     );
   }
