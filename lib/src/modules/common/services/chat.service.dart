@@ -29,8 +29,23 @@ class ChatService {
 
   /// Adds new chat to chat list
   static Future addNewChat(Chat newChat) {
-    return Future.delayed(Duration(seconds: 1), () {
-      MockData.chats.add(newChat);
+    return Future.delayed(
+      Duration(seconds: 1),
+      () {
+        MockData.chats.add(newChat);
+      },
+    );
+  }
+
+  static Future<bool> checkContactHasChat(String contactId) {
+    return Future.delayed(Duration(milliseconds: 200), () {
+      return MockData.chats.any((chat) => chat.contact.id == contactId);
+    });
+  }
+
+  static Future<Chat> getChatByContact(String contactId) {
+    return Future.delayed(Duration(milliseconds: 200), () {
+      return MockData.chats.firstWhere((chat) => chat.contact.id == contactId);
     });
   }
 }

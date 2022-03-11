@@ -1,4 +1,6 @@
+import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
+import 'package:com.aziznal.whatsapp_clone/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -39,11 +41,15 @@ class ContactItemWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        if (chatIsNotAlreadyCreated()) {
-          createNewChat();
-        }
-
-        gotoChatScreen();
+        Utils.executeAfterTimerHack(() async {
+          if (await chatIsNotAlreadyCreated()) {
+            Chat newChat = await createNewChat();
+            gotoChatScreen(newChat);
+          } else {
+            Chat chat = await ChatService.getChatByContact(contactData.id);
+            gotoChatScreen(chat);
+          }
+        });
       },
       splashColor: const Color.fromARGB(255, 136, 136, 136),
     );
@@ -88,25 +94,24 @@ class ContactItemWidget extends StatelessWidget {
     );
   }
 
-  bool chatIsNotAlreadyCreated() {
-    return !MockData.chats.any((chat) => chat.contact == contactData);
+  Future<bool> chatIsNotAlreadyCreated() async {
+    return !(await ChatService.checkContactHasChat(contactData.id));
   }
 
-  void createNewChat() {
+  Future<Chat> createNewChat() async {
     Chat newChat = Chat(
       contact: contactData,
       messages: [],
     );
 
-    ChatService.addNewChat(newChat).then((_) {
+    await ChatService.addNewChat(newChat).then((_) {
       Get.find<ItemListController<Chat>>().addNewObject(newChat);
-      gotoChatScreen();
     });
+
+    return newChat;
   }
 
-  void gotoChatScreen() {
-    // TODO: change after implementation
-    // Get.offAndToNamed(ScreenRoutes.chat.withChatId(newChat.id));
-    Get.back();
+  void gotoChatScreen(Chat newChat) {
+    Get.offNamed(ScreenRoutes.chat.withChatId(newChat.id));
   }
 }

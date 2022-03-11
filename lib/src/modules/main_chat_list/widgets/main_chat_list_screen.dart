@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
+
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
