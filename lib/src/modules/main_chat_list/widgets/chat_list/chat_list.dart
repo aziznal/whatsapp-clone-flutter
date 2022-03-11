@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_item.dart';
 
 class ChatList extends StatelessWidget {
-  const ChatList({
-    Key? key,
-  }) : super(key: key);
+  const ChatList({Key? key, required this.chats}) : super(key: key);
+
+  final List<Chat>? chats;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,10 @@ class ChatList extends StatelessWidget {
   }
 
   List<ChatItemWidget> getChatItemWidgets() {
-    return MockData.chats
-        .map((chat) => ChatItemWidget(chatItemData: chat))
-        .toList();
+    if (chats == null) {
+      return [];
+    } else {
+      return chats!.map((chat) => ChatItemWidget(chatItemData: chat)).toList();
+    }
   }
 }

@@ -1,5 +1,6 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
 
@@ -8,6 +9,10 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soo
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.model.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list_screen.dart';
+
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
 
 class ContactItemWidget extends StatelessWidget {
@@ -15,6 +20,8 @@ class ContactItemWidget extends StatelessWidget {
     required this.contactData,
     Key? key,
   }) : super(key: key);
+
+  // TODO: move logic into Controller
 
   final Contact contactData;
 
@@ -87,15 +94,20 @@ class ContactItemWidget extends StatelessWidget {
   }
 
   void createNewChat() {
-    MockData.chats.add(Chat(
+    Chat newChat = Chat(
       contact: contactData,
       messages: [],
-    ));
+    );
+
+    ChatService.addNewChat(newChat).then((_) {
+      Get.find<MainChatListController>().addNewChat(newChat);
+      gotoChatScreen();
+    });
   }
 
   void gotoChatScreen() {
-    // TODO: change once implemented
-    // Get.offAndToNamed('/chat');
+    // TODO: change after implementation
+    // Get.offAndToNamed(ScreenRoutes.chat.withChatId(newChat.id));
     Get.back();
   }
 }

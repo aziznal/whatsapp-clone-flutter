@@ -1,3 +1,4 @@
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
@@ -10,14 +11,20 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app
 import 'package:com.aziznal.whatsapp_clone/src/utils/utils.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/main_chat_list_menu_item.enum.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_list.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.dart';
 
-class MainChatListScreen extends StatelessWidget {
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
+
+class MainChatListScreen extends GetView<MainChatListController> {
   MainChatListScreen({Key? key}) : super(key: key);
 
-  final MainChatListController controller = Get.put(MainChatListController());
+  // TODO: move logic into Controller
+
+  @override
+  MainChatListController controller = Get.put(MainChatListController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,12 @@ class MainChatListScreen extends StatelessWidget {
           _getPopupMenuActions(),
         ],
       ),
-      body: ChatList(),
+      body: controller.obx(
+        (state) {
+          return ChatList(chats: state);
+        },
+        onLoading: CustomLoadingSpinner(),
+      ),
       floatingActionButton: NewChatFAB(),
     );
   }
@@ -66,4 +78,38 @@ class MainChatListScreen extends StatelessWidget {
   }
 }
 
-class MainChatListController extends GetxController {}
+class MainChatListController extends GetxController
+    with StateMixin<List<Chat>> {
+  RxList<Chat> chats = RxList<Chat>();
+
+  @override
+  onInit() {
+    super.onInit();
+    loadChats();
+
+    listenToListUpdate();
+  }
+
+  void listenToListUpdate() {
+    chats.listen((p0) {
+      update();
+    });
+  }
+
+  loadChats() {
+    return ChatService.getAllChats().then(
+      (loadedChats) {
+        chats.addAll(loadedChats);
+        change(chats, status: RxStatus.success());
+      },
+    ).onError(
+      (error, stackTrace) {
+        change(chats, status: RxStatus.error());
+      },
+    );
+  }
+
+  addNewChat(Chat newChat) {
+    chats.add(newChat);
+  }
+}

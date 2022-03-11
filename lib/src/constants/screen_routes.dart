@@ -4,10 +4,10 @@ class ScreenRoutes {
   static String about = '/about';
   static String addNewChat = '/add-new-chat';
 
-  static Chat chat = Chat();
+  static _Chat chat = _Chat();
 }
 
-class Chat {
+class _Chat {
   String template = '/chat/:${ChatScreenParameters.chatId}';
 
   String withChatId(String chatId) {
