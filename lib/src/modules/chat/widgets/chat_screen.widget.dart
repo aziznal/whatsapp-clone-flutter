@@ -1,3 +1,4 @@
+import 'package:com.aziznal.whatsapp_clone/src/modules/chat/widgets/message_box.widget.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
@@ -6,39 +7,9 @@ import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.widget.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/chat/models/chat_screen_parameters.model.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/chat/controllers/chat.controller.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
-
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
-
-/// Manages loading chat data and screen loading state
-class ChatController extends GetxController {
-  var isLoading = true.obs;
-  Chat? chat;
-
-  /// Returns chatId param value
-  /// 
-  /// Throws [ArgumentError] if chatId is null
-  String _getChatIdFromParams() {
-    String? chatId = Get.parameters[ChatScreenParameters.chatId];
-
-    if (chatId == null) {
-      Get.back();
-      throw ArgumentError('No value for chatId was detected', 'chatId');
-    }
-
-    return chatId;
-  }
-
-  /// Assigns value to [chat] using service
-  void loadChat() async {
-    String chatId = _getChatIdFromParams();
-
-    chat = await ChatService.fetchChatById(chatId);
-    isLoading(false);
-  }
-}
+import 'package:com.aziznal.whatsapp_clone/src/modules/chat/widgets/message_list/message_list.widget.dart';
 
 class ChatScreen extends StatelessWidget {
   final controller = Get.put(ChatController());
@@ -58,14 +29,29 @@ class ChatScreen extends StatelessWidget {
       ),
       body: Obx(
         () => controller.isLoading.isTrue
-            ? CustomLoadingSpinner(loadingText: 'Loading Chat...',)
+            ? CustomLoadingSpinner(
+                loadingText: 'Loading Chat...',
+              )
             : createChatScreen(),
       ),
     );
   }
 
   Widget createChatScreen() {
-    return getChatBody();
+    return Column(
+      children: [
+        Expanded(
+          flex: 90,
+          child: MessageList(
+            messages: controller.chat!.messages,
+          ),
+        ),
+        Expanded(
+          flex: 10,
+          child: MessageSendFieldWidget(),
+        ),
+      ],
+    );
   }
 
   /// Displays contact name if chat has been loaded. Displays 'Loading' otherwise.

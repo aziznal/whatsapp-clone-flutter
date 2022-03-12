@@ -19,6 +19,8 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.serv
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_list.widget.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.widget.dart';
 
+// TODO: convert this back into a stateless-widget and remove the override on controller. There's no need to use GetView here.
+
 /// Includes app bar with options and a chat list displaying all the user's current chats
 class MainChatListScreen extends GetView<ItemListController> {
   MainChatListScreen({Key? key}) : super(key: key);
