@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-extension AddPaddingBetweenListItems on List<Widget> {
+// REFACTOR: too much copy paste
+extension PaddingBetweenItems on List<Widget> {
   List<Widget> addSpacing(double paddingAmount) {
     return map(
       (widget) {

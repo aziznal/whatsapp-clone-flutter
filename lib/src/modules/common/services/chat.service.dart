@@ -6,7 +6,7 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/constants/
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/data.mock.dart';
 
 class ChatService {
   // Example of a function that can be made using http client

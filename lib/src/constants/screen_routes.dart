@@ -1,4 +1,4 @@
-import 'package:com.aziznal.whatsapp_clone/src/modules/chat/models/page-params.model.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/chat/models/chat_screen_parameters.model.dart';
 
 class ScreenRoutes {
   static String about = '/about';

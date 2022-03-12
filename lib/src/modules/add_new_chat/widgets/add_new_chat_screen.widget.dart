@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.widget.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.widget.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
 
@@ -11,7 +11,7 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.mod
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/services/contacts.service.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/contact_list/contact_list.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/contact_list/contact_list.widget.dart';
 
 class AddNewChatScreen extends StatelessWidget {
   AddNewChatScreen({Key? key}) : super(key: key);

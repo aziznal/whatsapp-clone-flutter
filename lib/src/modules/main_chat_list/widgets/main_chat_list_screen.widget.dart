@@ -9,15 +9,15 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_l
 
 import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.widget.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.widget.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/utils/utils.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/main_chat_list_menu_item.enum.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_list.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_list.widget.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.widget.dart';
 
 class MainChatListScreen extends GetView<ItemListController> {
   MainChatListScreen({Key? key}) : super(key: key);

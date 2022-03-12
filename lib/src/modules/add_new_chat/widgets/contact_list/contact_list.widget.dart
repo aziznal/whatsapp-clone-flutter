@@ -1,4 +1,4 @@
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,7 +7,7 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.mod
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/contact_list/contact_item.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/contact_list/contact_item.widget.dart';
 
 class ContactList extends StatefulWidget {
   const ContactList({

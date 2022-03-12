@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.widget.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
+import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);

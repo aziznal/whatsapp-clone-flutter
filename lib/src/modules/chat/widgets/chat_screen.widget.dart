@@ -1,12 +1,12 @@
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
+import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/chat/models/page-params.model.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/chat/models/chat_screen_parameters.model.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 

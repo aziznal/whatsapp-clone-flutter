@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
+import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.widget.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.model.dart';
 

@@ -2,7 +2,7 @@
     "import list extensions": {
         "scope": "dart",
         "prefix": "import_list_ext",
-        "body": "import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';",
+        "body": "import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';",
         "description": "Adds import statement to easily include list extensions"
     }
 }

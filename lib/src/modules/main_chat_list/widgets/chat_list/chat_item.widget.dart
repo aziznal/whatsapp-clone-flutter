@@ -8,9 +8,9 @@ import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart'
     as route;
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.widget.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
+import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';
 
 class ChatItemWidget extends StatefulWidget {
   final Chat chatItemData;

@@ -6,10 +6,10 @@ import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/theme/custom_theme.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list_screen.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/about/widgets/about_screen.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/add_new_chat_screen.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/chat/widgets/chat_screen.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/about/widgets/about_screen.widget.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/widgets/add_new_chat_screen.widget.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/chat/widgets/chat_screen.widget.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/main_chat_list_screen.widget.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

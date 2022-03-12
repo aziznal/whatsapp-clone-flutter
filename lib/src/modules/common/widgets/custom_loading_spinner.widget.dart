@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
+import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';
 
 // TODO: add param for loading text
 

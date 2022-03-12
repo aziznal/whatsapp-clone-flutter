@@ -1,10 +1,10 @@
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_item.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_item.widget.dart';
 import 'package:get/get.dart';
 
 class ChatList extends StatelessWidget {
