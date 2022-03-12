@@ -2,7 +2,10 @@ import 'package:contacts_service/contacts_service.dart' as device_service;
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.model.dart';
 
+/// Basic service to interact with device contacts
 class ContactsService {
+
+  /// Returns a list of device contacts that have at least one phone number.
   static Future<List<Contact>> getAllContacts() async {
     List<device_service.Contact> contacts =
         await device_service.ContactsService.getContacts();

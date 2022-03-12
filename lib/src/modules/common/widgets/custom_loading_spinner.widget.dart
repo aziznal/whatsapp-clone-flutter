@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';
 
-// TODO: add param for loading text
-
+/// Basic loading spinner that shows text above the spinner
 class CustomLoadingSpinner extends StatelessWidget {
+  final String loadingText;
+
   const CustomLoadingSpinner({
     Key? key,
+    this.loadingText = 'Loading...',
   }) : super(key: key);
 
   @override
@@ -15,8 +17,8 @@ class CustomLoadingSpinner extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          Text('Loading Chats...'),
+        children: [
+          Text(loadingText),
           CircularProgressIndicator(),
         ].addBottomPadding(24),
       ),

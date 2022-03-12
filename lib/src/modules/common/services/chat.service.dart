@@ -8,6 +8,10 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/data.mock.dart';
 
+/// Handles communication with chat api
+///
+/// Note: using mock data at the moment. Still returning [Future] to make api
+/// integration easy in the future
 class ChatService {
   // Example of a function that can be made using http client
   // ignore: unused_element
@@ -59,7 +63,7 @@ class ChatService {
   /// Returns chat by given [chatId].
   /// 
   /// Warning: Does not handle non-existing chats.
-  static Future<Chat> getChatById(String chatId) async {
+  static Future<Chat> fetchChatById(String chatId) async {
     return Future.delayed(Duration(milliseconds: 350), () {
       return MockData.chats.firstWhere((chat) => chat.id == chatId);
     });

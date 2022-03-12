@@ -4,6 +4,7 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app
 
 import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';
 
+/// Basic Screen that shows some information about the app and myself
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);
 
@@ -37,7 +38,7 @@ class AboutScreen extends StatelessWidget {
               fontSize: 17,
             ),
           ),
-        ].addVerticalSpacing(14.0),
+        ].addVerticalPadding(14.0),
       ),
     );
   }

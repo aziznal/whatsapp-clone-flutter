@@ -13,6 +13,6 @@ class Contact {
     required this.status,
     required this.imageAssetPath,
   }) {
-    id = Utils.generateRandomId();
+    id = Utils.getRandomUuid();
   }
 }

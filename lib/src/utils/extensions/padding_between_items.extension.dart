@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 
 // REFACTOR: too much copy paste
+
+/// Extension that adds methods for adding padding between items for lists of [Widget]
+/// 
+/// Example:
+/// ```dart
+/// Column(
+///   children: [
+///     Text('item 1'),
+///     Text('item 2'),
+///     .
+///     .
+///   ].addBottomPadding(12.0);
+/// )
+/// ```
 extension PaddingBetweenItems on List<Widget> {
-  List<Widget> addSpacing(double paddingAmount) {
+  List<Widget> addPadding(double paddingAmount) {
     return map(
       (widget) {
         return Padding(
@@ -13,7 +27,7 @@ extension PaddingBetweenItems on List<Widget> {
     ).toList();
   }
 
-  List<Widget> addVerticalSpacing(double paddingAmount) {
+  List<Widget> addVerticalPadding(double paddingAmount) {
     return map(
       (widget) {
         return Padding(
@@ -24,7 +38,7 @@ extension PaddingBetweenItems on List<Widget> {
     ).toList();
   }
 
-  List<Widget> addHorizontalSpacing(double paddingAmount) {
+  List<Widget> addHorizontalPadding(double paddingAmount) {
     return map(
       (widget) {
         return Padding(

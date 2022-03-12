@@ -10,15 +10,16 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.mod
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/add_new_chat/controllers/add_new_chat.controller.dart';
 
+/// Displays information about a contact in the format of a basic card
 class ContactItemWidget extends StatelessWidget {
   ContactItemWidget({
-    required this.contactData,
+    required this.contact,
     Key? key,
   }) : super(key: key);
 
-  final Contact contactData;
+  final Contact contact;
 
-  final controller = Get.put(ContactItemController());
+  final controller = Get.find<ContactItemController>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class ContactItemWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        controller.gotoChatOfClickedContact(contactData);
+        controller.gotoChatOfClickedContact(contact);
       },
       splashColor: const Color.fromARGB(255, 136, 136, 136),
     );
@@ -48,7 +49,7 @@ class ContactItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            contactData.name,
+            contact.name,
             textAlign: TextAlign.start,
             style: TextStyle(
               fontSize: 17,
@@ -57,10 +58,10 @@ class ContactItemWidget extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           Text(
-            contactData.status,
+            contact.status,
             overflow: TextOverflow.ellipsis,
           ),
-        ].addVerticalSpacing(2),
+        ].addVerticalPadding(2),
       ),
     );
   }
@@ -73,7 +74,7 @@ class ContactItemWidget extends StatelessWidget {
         margin: const EdgeInsets.only(right: 10.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(300.0),
-          child: Image.asset(contactData.imageAssetPath),
+          child: Image.asset(contact.imageAssetPath),
         ),
       ),
       onTap: () => showComingSoonSnackBar(context),

@@ -9,16 +9,26 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/contact.mod
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
 
+/// Manages the state of chats related to contact item
 class ContactItemController extends GetxController {
+  var isLoading = false.obs;
+  var isCreatingNewChat = false.obs;
+
   /// Navigates to the chat of the given [contact]
   ///
   /// If this given [contact] does not already have a chat, then a new chat is created first.
   gotoChatOfClickedContact(Contact contact) async {
+    isLoading(true);
+
     if (await _chatIsNotAlreadyCreated(contact)) {
+      isCreatingNewChat(true);
       await _createNewChat(contact);
     }
 
     Chat chat = await ChatService.getChatByContactId(contact.id);
+
+    isCreatingNewChat(false);
+    isLoading(false);
 
     _gotoChatScreen(chat);
   }

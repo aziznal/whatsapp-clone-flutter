@@ -12,23 +12,37 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soo
 
 import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/padding_between_items.extension.dart';
 
+/// Widget that displays a chat item in the form of a card
+/// 
+/// Includes the image, name, and last message of the contact of the given [chat]
 class ChatItemWidget extends StatefulWidget {
-  final Chat chatItemData;
+  final Chat chat;
 
   const ChatItemWidget({
-    required this.chatItemData,
+    required this.chat,
     Key? key,
   }) : super(key: key);
 
   @override
   State<ChatItemWidget> createState() => _ChatItemWidgetState();
+
+  foo() {}
 }
 
 class _ChatItemWidgetState extends State<ChatItemWidget> {
-  late double opacity = 0.0;
+  /// This variable controls whether the widget is visible
+  ///
+  /// This is changed in the [_animateIn] method
+  late var opacity = 0.0;
 
   _ChatItemWidgetState() {
-    Timer(Duration(milliseconds: 1000), () {
+    _animateIn();
+  }
+
+  /// Animates chat item card in using a fade-in effect
+  void _animateIn() {
+    // This timer represents the delay BEFORE the animation starts
+    Timer(Duration(milliseconds: 500), () {
       setState(() {
         opacity = 1.0;
       });
@@ -38,35 +52,40 @@ class _ChatItemWidgetState extends State<ChatItemWidget> {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
+      // This duration is how long the animation will take
       duration: Duration(milliseconds: 200),
       opacity: opacity,
-      child: InkWell(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              getImageWidget(context),
-              getTitleAndSubtitle(),
-            ],
-          ),
-        ),
-        onTap: () {
-          gotoChatScreen();
-        },
-        splashColor: const Color.fromARGB(255, 136, 136, 136),
-      ),
+      child: _createChatBody(context),
     );
   }
 
-  Widget getTitleAndSubtitle() {
+  Widget _createChatBody(BuildContext context) {
+    return InkWell(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _createImageWidget(context),
+            _createTitleAndSubtitle(),
+          ],
+        ),
+      ),
+      onTap: () {
+        _gotoChatScreen();
+      },
+      splashColor: const Color.fromARGB(255, 136, 136, 136),
+    );
+  }
+
+  Widget _createTitleAndSubtitle() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.chatItemData.contact.name,
+          widget.chat.contact.name,
           textAlign: TextAlign.start,
           style: TextStyle(
             fontSize: 17,
@@ -74,15 +93,13 @@ class _ChatItemWidgetState extends State<ChatItemWidget> {
           ),
         ),
         Text(
-          widget.chatItemData.messages.isNotEmpty
-              ? widget.chatItemData.messages.last.body
-              : '',
+          widget.chat.messages.isNotEmpty ? widget.chat.messages.last.body : '',
         ),
-      ].addVerticalSpacing(2),
+      ].addVerticalPadding(2),
     );
   }
 
-  Widget getImageWidget(BuildContext context) {
+  Widget _createImageWidget(BuildContext context) {
     return GestureDetector(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.20,
@@ -90,14 +107,15 @@ class _ChatItemWidgetState extends State<ChatItemWidget> {
         margin: const EdgeInsets.only(right: 10.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(300.0),
-          child: Image.asset(widget.chatItemData.contact.imageAssetPath),
+          child: Image.asset(widget.chat.contact.imageAssetPath),
         ),
       ),
       onTap: () => showComingSoonSnackBar(context),
     );
   }
 
-  void gotoChatScreen() {
-    Get.toNamed(route.ScreenRoutes.chat.withChatId(widget.chatItemData.id));
+  /// Navigates to chat screen for the current [widget.chat]
+  void _gotoChatScreen() {
+    Get.toNamed(route.ScreenRoutes.chat.withChatId(widget.chat.id));
   }
 }

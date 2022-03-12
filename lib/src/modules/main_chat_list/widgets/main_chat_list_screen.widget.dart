@@ -2,28 +2,29 @@ import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
-
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
-
-import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
+import 'package:com.aziznal.whatsapp_clone/src/utils/utils.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.widget.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_app_bar.widget.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/utils/utils.dart';
+import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
 
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/controllers/item_list.controller.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/models/main_chat_list_menu_item.enum.dart';
+
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/chat_list/chat_list.widget.dart';
 import 'package:com.aziznal.whatsapp_clone/src/modules/main_chat_list/widgets/new_chat_fab.widget.dart';
 
+/// Includes app bar with options and a chat list displaying all the user's current chats
 class MainChatListScreen extends GetView<ItemListController> {
   MainChatListScreen({Key? key}) : super(key: key);
 
   @override
-  ItemListController<Chat> controller = Get.put(ItemListController<Chat>(
+  final ItemListController<Chat> controller = Get.put(ItemListController<Chat>(
     itemLoaderMethod: () => ChatService.getAllChats(),
   ));
 
@@ -33,8 +34,8 @@ class MainChatListScreen extends GetView<ItemListController> {
       appBar: CustomAppBar(
         text: 'WhatsappClone',
         actions: [
-          _getSearchAction(context),
-          _getPopupMenuActions(),
+          _createSearchAction(context),
+          _createPopupMenuActions(),
         ],
       ),
       body: ChatList(),
@@ -42,7 +43,7 @@ class MainChatListScreen extends GetView<ItemListController> {
     );
   }
 
-  Widget _getSearchAction(BuildContext context) {
+  Widget _createSearchAction(BuildContext context) {
     return IconButton(
       onPressed: () {
         showComingSoonSnackBar(context);
@@ -51,7 +52,7 @@ class MainChatListScreen extends GetView<ItemListController> {
     );
   }
 
-  Widget _getPopupMenuActions() {
+  Widget _createPopupMenuActions() {
     return PopupMenuButton<MainChatListMenuItem>(
       itemBuilder: (context) {
         return [

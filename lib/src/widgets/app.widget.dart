@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+
+import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/constants/screen_routes.dart';
 
@@ -24,20 +24,25 @@ class App extends StatelessWidget {
       home: Builder(
         builder: (context) => MainChatListScreen(),
       ),
-      getPages: [
-        GetPage(
-          name: ScreenRoutes.addNewChat,
-          page: () => (AddNewChatScreen()),
-        ),
-        GetPage(
-          name: ScreenRoutes.chat.template,
-          page: () => (ChatScreen()),
-        ),
-        GetPage(
-          name: ScreenRoutes.about,
-          page: () => (AboutScreen()),
-        )
-      ],
+      getPages: getPageRoutes(),
     );
+  }
+
+  /// Returns list of all pages available in application as a [GetPage] list
+  List<GetPage<Widget>> getPageRoutes() {
+    return [
+      GetPage(
+        name: ScreenRoutes.addNewChat,
+        page: () => (AddNewChatScreen()),
+      ),
+      GetPage(
+        name: ScreenRoutes.chat.template,
+        page: () => (ChatScreen()),
+      ),
+      GetPage(
+        name: ScreenRoutes.about,
+        page: () => (AboutScreen()),
+      )
+    ];
   }
 }

@@ -12,6 +12,6 @@ class Chat {
     required this.contact,
     required this.messages,
   }) {
-    id = Utils.generateRandomId();
+    id = Utils.getRandomUuid();
   }
 }
