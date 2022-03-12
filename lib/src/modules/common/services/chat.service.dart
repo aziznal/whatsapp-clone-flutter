@@ -8,8 +8,6 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
 
-// TODO: convert to GetXService
-
 class ChatService {
   // Example of a function that can be made using http client
   // ignore: unused_element
@@ -17,9 +15,9 @@ class ChatService {
     return http.get(Uri.parse(MainChatListApi.getAllChats)) as List<Chat>;
   }
 
-  // TODO: add method for getting all contacts
-
-  // Returns all available chats
+  /// Returns all available chats
+  /// 
+  /// Warning: has not been tested to see what happens if no chats are available
   static Future<List<Chat>> getAllChats() {
     return Future<List<Chat>>.delayed(
       Duration(seconds: 2),
@@ -27,29 +25,43 @@ class ChatService {
     );
   }
 
-  /// Adds new chat to chat list
+  /// Adds new chat associated with the contact information included in the given [newChat] object
+  ///
+  /// Warning: Does not handle already existing chats. This will most likely
+  /// create duplicate chats for the same contact if called twice.
   static Future addNewChat(Chat newChat) {
     return Future.delayed(
-      Duration(seconds: 1),
+      Duration(milliseconds: 350),
       () {
         MockData.chats.add(newChat);
       },
     );
   }
 
+  /// Returns true if contact with given [contactId] already has an active chat
+  /// 
+  /// Warning: Does not handle non-existing contacts.
   static Future<bool> checkContactHasChat(String contactId) {
-    return Future.delayed(Duration(milliseconds: 200), () {
+    return Future.delayed(Duration(milliseconds: 350), () {
       return MockData.chats.any((chat) => chat.contact.id == contactId);
     });
   }
 
-  static Future<Chat> getChatByContact(String contactId) {
-    return Future.delayed(Duration(milliseconds: 200), () {
+  /// Returns the chat for the given [contactId]
+  /// 
+  /// Warning: Does not handle non-existing chats.
+  static Future<Chat> getChatByContactId(String contactId) {
+    return Future.delayed(Duration(milliseconds: 350), () {
       return MockData.chats.firstWhere((chat) => chat.contact.id == contactId);
     });
   }
 
+  /// Returns chat by given [chatId].
+  /// 
+  /// Warning: Does not handle non-existing chats.
   static Future<Chat> getChatById(String chatId) async {
-    return MockData.chats.firstWhere((chat) => chat.id == chatId);
+    return Future.delayed(Duration(milliseconds: 350), () {
+      return MockData.chats.firstWhere((chat) => chat.id == chatId);
+    });
   }
 }
