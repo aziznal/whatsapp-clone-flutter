@@ -1,3 +1,5 @@
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/services/chat.service.dart';
+import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/custom_loading_spinner.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -6,28 +8,46 @@ import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/chat/models/page-params.model.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/mock_data.dart';
-
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.dart';
+
+class ChatController extends GetxController {
+  RxBool isLoading = true.obs;
+  Chat? chat;
+
+  loadChatById(String chatId) async {
+    chat = await ChatService.getChatById(chatId);
+    isLoading(false);
+  }
+}
 
 class ChatScreen extends StatelessWidget {
   late final String chatId;
-  late final Chat _chat;
+
+  final controller = Get.put(ChatController());
 
   ChatScreen({
     Key? key,
   }) : super(key: key) {
     chatId = getChatIdFromParams();
-    _chat = getChatById();
+    controller.loadChatById(chatId);
   }
 
   @override
   Widget build(BuildContext context) {
+    return Obx(
+      () => controller.isLoading.isTrue
+          ? CustomLoadingSpinner()
+          : getLoadedScreen(),
+    );
+  }
+
+  Widget getLoadedScreen() {
     return Scaffold(
       appBar: AppBar(
         title: getImageWithBackButton(),
         automaticallyImplyLeading: false,
       ),
+      body: getChatBody(),
     );
   }
 
@@ -40,11 +60,6 @@ class ChatScreen extends StatelessWidget {
       Get.back();
       throw Error();
     }
-  }
-
-  Chat getChatById() {
-    // TODO: change to use service
-    return MockData.chats.firstWhere((chat) => chat.id == chatId);
   }
 
   Widget getImageWithBackButton() {
@@ -70,7 +85,7 @@ class ChatScreen extends StatelessWidget {
               ),
             ),
             Text(
-              _chat.contact.name,
+              controller.chat!.contact.name,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -79,6 +94,12 @@ class ChatScreen extends StatelessWidget {
           ].addHorizontalSpacing(4),
         ),
       ],
+    );
+  }
+
+  Widget getChatBody() {
+    return Center(
+      child: Text('loaded chat! ${controller.chat!.contact.name}'),
     );
   }
 }

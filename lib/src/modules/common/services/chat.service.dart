@@ -48,4 +48,8 @@ class ChatService {
       return MockData.chats.firstWhere((chat) => chat.contact.id == contactId);
     });
   }
+
+  static Future<Chat> getChatById(String chatId) async {
+    return MockData.chats.firstWhere((chat) => chat.id == chatId);
+  }
 }

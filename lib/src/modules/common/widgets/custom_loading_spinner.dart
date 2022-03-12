@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/utils/extensions/list.extensions.dart';
 
+// TODO: add param for loading text
+
 class CustomLoadingSpinner extends StatelessWidget {
   const CustomLoadingSpinner({
     Key? key,
