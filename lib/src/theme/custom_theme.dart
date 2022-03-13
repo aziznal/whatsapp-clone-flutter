@@ -21,26 +21,9 @@ class CustomPrimaryColor {
   );
 }
 
-/// Note: this accent color isn't being used anywhere
-class CustomAccentColor {
-  static const int _whatsappTealAccentValue = 0xFF36FFBC;
-
-  /// (unused)
-  static const MaterialColor whatsappTealAccent = MaterialColor(
-    _whatsappTealAccentValue,
-    <int, Color>{
-      100: Color(0xFF69FFCD),
-      200: Color(_whatsappTealAccentValue),
-      400: Color(0xFF03FFAB),
-      700: Color(0xFF00E89B),
-    },
-  );
-}
-
-class BasicColors {
+class ChatColors {
   static var messageListBackground = Color.fromARGB(255, 243, 243, 243);
 
   static var sentMessageColor = Color.fromARGB(225, 220, 240, 197);
   static var receivedMessageColor = Colors.white;
 }
-

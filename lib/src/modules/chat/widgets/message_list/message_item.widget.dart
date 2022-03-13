@@ -47,8 +47,8 @@ class MessageItemWidget extends StatelessWidget {
         child: Icon(
           CustomIcons.message_indicator,
           color: message.sender == MessageSender.self
-              ? BasicColors.sentMessageColor
-              : BasicColors.receivedMessageColor,
+              ? ChatColors.sentMessageColor
+              : ChatColors.receivedMessageColor,
           size: 17,
         ),
       ),
@@ -66,8 +66,8 @@ class MessageItemWidget extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: message.sender == MessageSender.self
-                ? BasicColors.sentMessageColor
-                : BasicColors.receivedMessageColor,
+                ? ChatColors.sentMessageColor
+                : ChatColors.receivedMessageColor,
             boxShadow: const [
               BoxShadow(
                 color: Color.fromARGB(255, 185, 185, 185),
