@@ -8,6 +8,8 @@ import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/chat.model.
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/mock/data.mock.dart';
 
+const artificialDelay = 0;
+
 /// Handles communication with chat api
 ///
 /// Note: using mock data at the moment. Still returning [Future] to make api
@@ -20,7 +22,7 @@ class ChatService {
   }
 
   /// Returns all available chats
-  /// 
+  ///
   /// Warning: has not been tested to see what happens if no chats are available
   static Future<List<Chat>> getAllChats() {
     return Future<List<Chat>>.delayed(
@@ -35,7 +37,7 @@ class ChatService {
   /// create duplicate chats for the same contact if called twice.
   static Future addNewChat(Chat newChat) {
     return Future.delayed(
-      Duration(milliseconds: 350),
+      Duration(milliseconds: artificialDelay),
       () {
         MockData.chats.add(newChat);
       },
@@ -43,28 +45,28 @@ class ChatService {
   }
 
   /// Returns true if contact with given [contactId] already has an active chat
-  /// 
+  ///
   /// Warning: Does not handle non-existing contacts.
   static Future<bool> checkContactHasChat(String contactId) {
-    return Future.delayed(Duration(milliseconds: 350), () {
+    return Future.delayed(Duration(milliseconds: artificialDelay), () {
       return MockData.chats.any((chat) => chat.contact.id == contactId);
     });
   }
 
   /// Returns the chat for the given [contactId]
-  /// 
+  ///
   /// Warning: Does not handle non-existing chats.
   static Future<Chat> getChatByContactId(String contactId) {
-    return Future.delayed(Duration(milliseconds: 350), () {
+    return Future.delayed(Duration(milliseconds: artificialDelay), () {
       return MockData.chats.firstWhere((chat) => chat.contact.id == contactId);
     });
   }
 
   /// Returns chat by given [chatId].
-  /// 
+  ///
   /// Warning: Does not handle non-existing chats.
   static Future<Chat> fetchChatById(String chatId) async {
-    return Future.delayed(Duration(milliseconds: 350), () {
+    return Future.delayed(Duration(milliseconds: artificialDelay), () {
       return MockData.chats.firstWhere((chat) => chat.id == chatId);
     });
   }

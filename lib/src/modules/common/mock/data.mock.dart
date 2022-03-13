@@ -23,11 +23,11 @@ class MockData {
     Chat(
       contact: contacts[0],
       messages: [
-        Message(
-          body: 'Hey. This is a pretty long message. I sure hope it wont ruin your message box!',
-          dateSent: DateTime.now(),
-          sender: MessageSender.self,
-        ),
+        // Message(
+        //   body: 'Hey. This is a pretty long message. I sure hope it wont ruin your message box!',
+        //   dateSent: DateTime.now(),
+        //   sender: MessageSender.self,
+        // ),
         Message(
           body: 'Hiya',
           dateSent: DateTime.now().add(Duration(minutes: 2)),
@@ -87,6 +87,31 @@ class MockData {
           body: 'Just finished making my app!',
           dateSent: DateTime.now().add(Duration(minutes: 7)),
           sender: MessageSender.self,
+        ),
+        Message(
+          body: 'Heck yeah!',
+          dateSent: DateTime.now().add(Duration(minutes: 8)),
+          sender: MessageSender.other,
+        ),
+        Message(
+          body: 'Heck yeah!',
+          dateSent: DateTime.now().add(Duration(minutes: 8)),
+          sender: MessageSender.other,
+        ),
+        Message(
+          body: 'Heck yeah!',
+          dateSent: DateTime.now().add(Duration(minutes: 8)),
+          sender: MessageSender.other,
+        ),
+        Message(
+          body: 'Heck yeah!',
+          dateSent: DateTime.now().add(Duration(minutes: 8)),
+          sender: MessageSender.other,
+        ),
+        Message(
+          body: 'Heck yeah!',
+          dateSent: DateTime.now().add(Duration(minutes: 8)),
+          sender: MessageSender.other,
         ),
         Message(
           body: 'Heck yeah!',

@@ -1,4 +1,3 @@
-import 'package:com.aziznal.whatsapp_clone/src/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/modules/common/models/message.model.dart';
@@ -20,6 +19,8 @@ class MessageList extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 10),
       child: ListView(
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        shrinkWrap: true,
         children: getMessageItemWidgets().addBottomPadding(8.0),
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:com.aziznal.whatsapp_clone/src/modules/chat/widgets/message_box.widget.dart';
-import 'package:com.aziznal.whatsapp_clone/src/theme/custom_theme.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
@@ -47,19 +46,8 @@ class ChatScreen extends StatelessWidget {
             fit: BoxFit.cover,
             opacity: 0.4),
       ),
-      child: Column(
-        children: [
-          Expanded(
-            flex: 90,
-            child: MessageList(
-              messages: controller.chat!.messages,
-            ),
-          ),
-          Expanded(
-            flex: 10,
-            child: MessageSendFieldWidget(),
-          ),
-        ],
+      child: MessageList(
+        messages: controller.chat!.messages,
       ),
     );
   }
