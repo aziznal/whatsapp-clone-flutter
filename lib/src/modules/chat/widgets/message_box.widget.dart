@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/theme/custom_theme.dart';
 
-import 'package:com.aziznal.whatsapp_clone/src/modules/common/widgets/coming_soon_snackbar.widget.dart';
-
 class MessageSendFieldWidget extends StatelessWidget {
   MessageSendFieldWidget({Key? key}) : super(key: key);
 
@@ -29,7 +27,7 @@ class MessageSendFieldWidget extends StatelessWidget {
 
   Widget createSendButton(BuildContext context) {
     return RawMaterialButton(
-      onPressed: () => showComingSoonSnackBar(context),
+      onPressed: () => {},
       elevation: 2.0,
       fillColor: CustomPrimaryColor.whatsappTeal.shade300,
       child: Icon(
@@ -45,17 +43,19 @@ class MessageSendFieldWidget extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(left: 4, right: 4),
-        child: TextField(
-          controller: textController,
-          style: TextStyle(
-            fontSize: 21,
-          ),
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              
-              borderRadius: BorderRadius.circular(50),
+        child: SizedBox(
+          height: 45,
+          child: TextField(
+            controller: textController,
+            style: TextStyle(
+              fontSize: 17,
+            ),
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
             ),
           ),
         ),

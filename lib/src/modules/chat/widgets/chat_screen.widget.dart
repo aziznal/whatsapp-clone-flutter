@@ -39,17 +39,26 @@ class ChatScreen extends StatelessWidget {
 
   Widget createChatScreen() {
     return Container(
-      padding: EdgeInsets.only(bottom: 2),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/images/chat-background.jpg'),
-            fit: BoxFit.cover,
-            opacity: 0.4),
-      ),
-      child: MessageList(
-        messages: controller.chat!.messages,
-      ),
-    );
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/chat-background.jpg'),
+              fit: BoxFit.cover,
+              opacity: 0.4),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              flex: 9,
+              child: MessageList(
+                messages: controller.chat!.messages,
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: MessageSendFieldWidget(),
+            ),
+          ],
+        ));
   }
 
   /// Displays contact name if chat has been loaded. Displays 'Loading' otherwise.
