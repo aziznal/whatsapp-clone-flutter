@@ -19,7 +19,6 @@ class MessageList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 10),
-      color: BasicColors.messageListBackground,
       child: ListView(
         children: getMessageItemWidgets().addBottomPadding(8.0),
       ),

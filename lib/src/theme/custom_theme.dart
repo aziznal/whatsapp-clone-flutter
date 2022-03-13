@@ -38,8 +38,9 @@ class CustomAccentColor {
 }
 
 class BasicColors {
-  static var messageListBackground = Color.fromARGB(255, 224, 224, 224);
+  static var messageListBackground = Color.fromARGB(255, 243, 243, 243);
 
   static var sentMessageColor = Color.fromARGB(225, 220, 240, 197);
   static var receivedMessageColor = Colors.white;
 }
+
