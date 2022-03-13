@@ -1,3 +1,4 @@
+import 'package:com.aziznal.whatsapp_clone/src/custom/custom_icons.dart';
 import 'package:flutter/material.dart';
 
 import 'package:com.aziznal.whatsapp_clone/src/theme/custom_theme.dart';
@@ -20,8 +21,8 @@ class MessageItemWidget extends StatelessWidget {
   Widget createMessage() {
     return Stack(
       children: [
-        createMessageTriangleIndicator(),
         createMessageBody(),
+        createMessageTriangleIndicator(),
       ],
     );
   }
@@ -29,8 +30,8 @@ class MessageItemWidget extends StatelessWidget {
   Widget createMessageBody() {
     return Padding(
       padding: EdgeInsets.only(
-        left: message.sender == MessageSender.self ? 80 : 6.0,
-        right: message.sender == MessageSender.self ? 6.0 : 80,
+        left: message.sender == MessageSender.self ? 80 : 20,
+        right: message.sender == MessageSender.self ? 20 : 80,
       ),
       child: createMessageBodyAndDate(),
     );
@@ -38,16 +39,18 @@ class MessageItemWidget extends StatelessWidget {
 
   Positioned createMessageTriangleIndicator() {
     return Positioned(
-      left: message.sender == MessageSender.self ? null : 0,
-      right: message.sender == MessageSender.self ? 0 : null,
-      top: 0,
-      child: Container(
-        width: 20,
-        height: 20,
-        decoration: BoxDecoration(
-            color: message.sender == MessageSender.self
-                ? BasicColors.sentMessageColor
-                : BasicColors.receivedMessageColor),
+      left: message.sender == MessageSender.self ? null : 4,
+      right: message.sender == MessageSender.self ? 4 : null,
+      top: 0.5,
+      child: Transform.scale(
+        scaleX: message.sender == MessageSender.self ? -1 : 1,
+        child: Icon(
+          CustomIcons.message_indicator,
+          color: message.sender == MessageSender.self
+              ? BasicColors.sentMessageColor
+              : BasicColors.receivedMessageColor,
+          size: 17,
+        ),
       ),
     );
   }
@@ -65,6 +68,14 @@ class MessageItemWidget extends StatelessWidget {
             color: message.sender == MessageSender.self
                 ? BasicColors.sentMessageColor
                 : BasicColors.receivedMessageColor,
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(255, 185, 185, 185),
+                blurRadius: 2,
+                spreadRadius: 0.5,
+                offset: Offset(0, 2),
+              )
+            ],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
